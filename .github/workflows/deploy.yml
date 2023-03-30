@@ -13,34 +13,26 @@ permissions:
 
 # 定义工作流
 jobs:
+  # This workflow contains a single job called "build"
 
-  checkout:
+  # 任务：构建
+  build:
     runs-on: ubuntu-latest
-    
+
     # 定义步骤
     steps:
+      # 检出代码
       - name: Checkout code
         uses: actions/checkout@v2
 
-
-  npm install:
-    runs-on: ubuntu-latest
-
-    # 定义步骤
-    steps:
+      # 步骤：安装 Node.js 环境
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
 
       - run: npm install
       - run: npm run docs:build
 
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    # 定义步骤
-    steps:
-      # 步骤：部署至gh-pages分支
+      # 步骤：部署至gh-pages分支上
       - name: To Github Page
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
