@@ -1,40 +1,46 @@
-# This is a basic workflow to help you get started with Actions
 
 name: Deploy Github Page
 
-# Controls when the action will run.
+# 每当 push 到 master 分支时触发部署
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # 在【master】分支推送事件时触发工作流
   push:
     branches: [master]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
+# 设置执行权限
 permissions:
   contents: write
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 定义工作流
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  checkout:
+    runs-on: ubuntu-latest
+    
+    # 定义步骤
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Setup Node.js environment
+
+  npm install:
+    runs-on: ubuntu-latest
+
+    # 定义步骤
+    steps:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
 
       - run: npm install
       - run: npm run docs:build
 
-      # To Github Page
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    # 定义步骤
+    steps:
+      # 步骤：部署至gh-pages分支
       - name: To Github Page
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
