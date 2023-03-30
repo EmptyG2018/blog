@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 // refer https://vitepress.vuejs.org/config/introduction for details
 export default defineConfig({
-  base: '/',
+  base: '/blog/',
   lang: "en-US",
   title: "Empty's blog",
   description:
