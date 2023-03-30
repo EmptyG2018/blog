@@ -66,6 +66,10 @@ export default defineConfig({
           text: "目录",
           link: "/tutorial/navigation",
         },
+        {
+          text: 'NVM安装使用流程教程（window）',
+          link: '/tutorial/nvm-install.md',
+        }
       ],
       "/command/": [
         {
@@ -80,6 +84,10 @@ export default defineConfig({
               text: "超细节！小白专属的git命令手册",
               link: "/command/util/git.md",
             },
+            {
+              text: '一分钟就能熟悉的常见nvm命令',
+              link: '/command/util/nvm.md',
+            }
           ],
         },
       ],
